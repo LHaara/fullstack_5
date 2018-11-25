@@ -37,7 +37,6 @@ class App extends React.Component {
       const user = JSON.parse(loggedUserJSON)
       this.setState({user})
       blogService.setToken(user.token)
-
      
     }
 
@@ -100,6 +99,35 @@ class App extends React.Component {
       })
 
     }
+  }
+
+  deleteBlog = (id) => {
+    return () => {
+      const blog = this.state.blogs.find(n => n._id === id)
+
+      if(window.confirm("delete "+blog.title+" by "+blog.author+"?")){
+
+          const blogs = this.state.blogs.filter(str => str._id !== id)
+
+          blogService
+            .del(id)
+            .then(response => {
+              if (response.status === 204)
+              {
+                this.setState({
+                  blogs,
+                  message: `'${blog.title}' was deleted`
+                }) 
+              }
+          })
+
+          setTimeout(() => {
+            this.setState({message: null})
+          }, 2000)
+      }
+
+    }
+
   }
 
 
@@ -178,6 +206,7 @@ class App extends React.Component {
               key={blog._id} 
               blog={blog} 
               updateLikes = {this.updateLikes(blog._id)}
+              delete={this.deleteBlog(blog._id)}
             />
           )}
 
