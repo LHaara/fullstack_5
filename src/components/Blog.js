@@ -21,6 +21,7 @@ render(){
   
   const currentUserName = JSON.parse(window.localStorage.getItem('loggedBlogappUser')).username
   console.log(this.props.blog.user)
+
   const showButtonIfItcanBeUsed = { 
     display : (this.props.blog.user === undefined || this.props.blog.user.username === currentUserName)
     ? '' : 'none'} 
