@@ -63,7 +63,7 @@ describe('<Blog />', () => {
     />
     )
 
-    const titleDiv = blogComponent.find('.title') 
+    const titleSpan = blogComponent.find('.title') 
     //console.log(titleDiv.debug())
 
     const divBeforeclick = blogComponent.find('.togglableContent')    
@@ -71,7 +71,7 @@ describe('<Blog />', () => {
     expect(divBeforeclick.getElement().props.style).toEqual({"display": "none", "paddingLeft": 10})
     
 
-    titleDiv.simulate('click')
+    titleSpan.simulate('click')
 
     const  divAfterclick = blogComponent.find('.togglableContent')
     console.log(divAfterclick.getElement().props.style)      

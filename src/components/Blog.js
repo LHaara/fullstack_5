@@ -34,7 +34,7 @@ render(){
 
 return (
       <div style={blogStyle}>
-       <div className="title" onClick={this.toggleVisibility}>{this.props.blog.title}</div><span> {this.props.blog.author}</span>
+       <span className="title" onClick={this.toggleVisibility}>{this.props.blog.title}</span><span> {this.props.blog.author}</span>
         <div style={showWhenVisible} className="togglableContent">
           <a href={this.props.blog.url}>{this.props.blog.url}</a>
           <div>{this.props.blog.likes} likes  <button  onClick={this.props.updateLikes} >like</button></div>
