@@ -18,12 +18,9 @@ render(){
   const showWhenVisible = { display: this.state.visible  ? '' : 'none', paddingLeft: 10}
 
   const showIfUser = this.props.blog.user !== undefined ? this.props.blog.user.name : ''
-  
-  const currentUserName = JSON.parse(window.localStorage.getItem('loggedBlogappUser')).username
-  console.log(this.props.blog.user)
 
   const showButtonIfItcanBeUsed = { 
-    display : (this.props.blog.user === undefined || this.props.blog.user.username === currentUserName)
+    display : (this.props.blog.user === undefined || this.props.blog.user.username === this.props.user.username)
     ? '' : 'none'} 
 
 
@@ -37,8 +34,8 @@ render(){
 
 return (
       <div style={blogStyle}>
-        <span onClick={this.toggleVisibility}>{this.props.blog.title}</span><span> {this.props.blog.author}</span>
-        <div style={showWhenVisible}>
+       <div className="title" onClick={this.toggleVisibility}>{this.props.blog.title}</div><span> {this.props.blog.author}</span>
+        <div style={showWhenVisible} className="togglableContent">
           <a href={this.props.blog.url}>{this.props.blog.url}</a>
           <div>{this.props.blog.likes} likes  <button  onClick={this.props.updateLikes} >like</button></div>
           <div>added by {showIfUser}</div>
@@ -46,8 +43,6 @@ return (
         </div> 
       </div>
         
-             
-
     )
   
   }

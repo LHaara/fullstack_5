@@ -73,7 +73,7 @@ class App extends React.Component {
 
       const blog = this.state.blogs.find(n => n._id === id)      
       const blogIndex = this.state.blogs.findIndex(n => n._id === id)
-      console.log(this.state.blogs)
+      //console.log(this.state.blogs)
       const changedBlog = { ...blog, likes: blog.likes+1 }
 
 
@@ -205,6 +205,7 @@ class App extends React.Component {
             <Blog 
               key={blog._id} 
               blog={blog} 
+              user={this.state.user}
               updateLikes = {this.updateLikes(blog._id)}
               delete={this.deleteBlog(blog._id)}
             />
