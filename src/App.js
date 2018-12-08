@@ -33,6 +33,11 @@ class App extends React.Component {
     )
     
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+
+/*     console.log(window.localStorage.getItem('loggedBlogAppUser'))
+    console.log(loggedUserJSON) */
+
+
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       this.setState({user})
@@ -170,7 +175,7 @@ class App extends React.Component {
   render() {
 
   const loginForm = () => (
-      <div>
+      <div className="login">
         <h2>Kirjaudu</h2>
     
         <form onSubmit={this.login}>
@@ -198,7 +203,7 @@ class App extends React.Component {
     )
 
   const blogForm = () => (    
-    <div>
+    <div className="blogs">
       <h2>blogs</h2>
 
           {this.state.blogs.map(blog => 
